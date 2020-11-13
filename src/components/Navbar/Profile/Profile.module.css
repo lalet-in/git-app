@@ -1,0 +1,10 @@
+.content {
+    grid-area: c;
+    background-color: coral;
+}
+.content img {
+    width: 350px;
+}
+.item {
+    color: chartreuse;
+}

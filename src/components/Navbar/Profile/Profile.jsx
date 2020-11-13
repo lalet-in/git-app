@@ -1,23 +1,24 @@
 import React from 'react'
+import s from './Profile.module.css'
 
 const  Profile = () => {
     return (
-        <div className='content'>
+        <div className={s.content}>
             <div>
-                <img src='https://luxfon.com/download.php?file=201203/800x600/luxfon.com-4786.jpg'/>
+                <img src='https://luxfon.com/download.php?file=201203/800x600/luxfon.com-4786.jpg' />
             </div>
             <div>
                 ava + description
             </div>
-            <div>
+            <div className={s.posts}>
                 My Posts
-                <div>
+                <div className={s.item}>
                     New Post
                 </div>
-                <div>
+                <div className={s.item}>
                     Post 1
                 </div>
-                <div>
+                <div className={s.item}>
                     Post 2
                 </div>
             </div>
