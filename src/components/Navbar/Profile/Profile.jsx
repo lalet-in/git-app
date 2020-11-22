@@ -1,27 +1,14 @@
 import React from 'react'
 import s from './Profile.module.css'
+import MyPosts from "./MyPosts/MyPosts";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-const  Profile = () => {
+const Profile = (props) => {
     return (
         <div className={s.content}>
-            <div>
-                <img src='https://luxfon.com/download.php?file=201203/800x600/luxfon.com-4786.jpg' />
-            </div>
-            <div>
-                ava + description
-            </div>
-            <div className={s.posts}>
-                My Posts
-                <div className={s.item}>
-                    New Post
-                </div>
-                <div className={s.item}>
-                    Post 1
-                </div>
-                <div className={s.item}>
-                    Post 2
-                </div>
-            </div>
+            <ProfileInfo/>
+            <MyPosts posts={props.state.posts}
+                     addPost={props.addPost}/>
         </div>
     );
 }

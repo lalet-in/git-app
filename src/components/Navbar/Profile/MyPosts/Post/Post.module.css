@@ -1,0 +1,8 @@
+.item {
+    color: chartreuse;
+}
+.item img {
+    width: 60px;
+    height: 50px;
+    border-radius: 30px;
+}
