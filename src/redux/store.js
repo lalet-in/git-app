@@ -76,7 +76,5 @@ let store = {
 }
 
 
-
-
 window.state = store;
 export default store;

@@ -3,43 +3,44 @@ import './App.css';
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Navbar/Profile/Profile";
-import News from "./components/Navbar/News/News";
 import Musik from "./components/Navbar/Musik/Musik";
 import Settings from "./components/Navbar/Settings/Settings";
-import Dialogs from "./components/Navbar/Dialogs/Dialogs";
-import {Route, BrowserRouter} from "react-router-dom";
+import {Route} from "react-router-dom";
 import Frends from "./components/Navbar/Frends/Frends";
+import DialogsContainer from "./components/Navbar/Dialogs/DialogsContainer";
+import NewsContainer from "./components/Navbar/News/NewsContainer";
 
 
 const App = (props) => {
+
   return (
-      <BrowserRouter>
       <div className='app-wrapper'>
              <Header/>
              <Navbar/>
              <div className='app-wrapper-content'>
                  <Route path='/profile'
                         render={ () => <Profile
-                            state={props.state.profilePage}
-                            addPost={props.addPost}/>} />
+                            store={props.store} />} />
                  <Route path='/dialogs'
-                        render={ () => <Dialogs
-                            state={props.state.dialogsPage}/>} />
+                        render={ () => <DialogsContainer
+                            store={props.store} />} />
                  <Route path='/news'
-                        render={ () => <News
-                            state={props.state.newsPage}/>} />
+                        render={ () => <NewsContainer
+                            store={props.store}
+                            /*state={props.state.newsPage}
+                            dispatch={props.dispatch}*/ />} />
                  <Route path='/musik'
                         render={ () => <Musik
-                            state={props.state.musikPage}/>} />
+                            state={props.state.musikPage} />} />
 
                  <Route path='/settings' component={Settings} />
 
-                 <Route path='/frends' r
-                        ender={ () => <Frends
+                 <Route path='/frends'
+                        render={ () => <Frends
                             state={props.state.frendsPage}/>} />
              </div>
       </div>
-      </BrowserRouter>);
+      );
 }
 
 export default App;

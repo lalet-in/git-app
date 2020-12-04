@@ -4,25 +4,33 @@ import NewsItem from "./NewsItem/NewsItemm";
 
 const News = (props) => {
 
-    let newsElement =
-        props.state.news.map(n => <NewsItem news={n.news} id={n.id}/>);
+    let state = props.newsPage;
 
-    let newNewsElement = React.createRef();
-    let addNews = () => {
-        let text = newNewsElement.current.value;
-        alert(text);
+    let newsElement = props.newsPage.news.map(n =>
+        <NewsItem news={n.news} id={n.id}/>);
+    let newNewsBody = props.newsPage.newNewsBody;
+
+    let onAddNewsClick = () => {
+        props.addNews();
+    }
+
+    let onNewNewsChange = (e) => {
+        let body = e.target.value;
+        props.updateNewNewsBody(body);
+
     }
 
     return (
         <div>
             <div>
-                <textarea ref={newNewsElement}></textarea>
-                <button onClick={addNews}>Add news</button>
+                <textarea value={newNewsBody}
+                          onChange={onNewNewsChange}
+                          placeholder={'Enter your news'} />
+                <button onClick={onAddNewsClick}>Send</button>
             </div>
             <div className={s.news}>
                 {newsElement}
             </div>
-
         </div>)
 }
 
