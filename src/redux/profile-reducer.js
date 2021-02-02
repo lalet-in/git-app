@@ -1,6 +1,7 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const TO_FETCH_ACTION = 'TO_FETCH_ACTION';
 
 let initialState = {
     posts: [
@@ -8,7 +9,10 @@ let initialState = {
         {id: 2, message: 'hello', likesCount: 73}
     ],
     newPostText: 'send post',
-    profile: null,
+    profile: {
+        profilePhotos: {}
+    },
+    isFetching : false
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -32,15 +36,22 @@ const profileReducer = (state = initialState, action) => {
         case SET_USER_PROFILE:
             return {
                 ...state,
-                profile: action.profile
+                profile: {...state.profile,
+                    profilePhotos : {...action.profilePhotos}}
+            }
+        case TO_FETCH_ACTION:
+            return {
+                ...state,
+                isFetching : action.status
             }
         default:
             return state;
     }
 }
 
+export const toFetchToggle = (status) => ({type : TO_FETCH_ACTION, status})
 export const addPostActionCreator = () => ({type: ADD_POST})
-export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
+export const setUserProfile = (profilePhotos) => ({type: SET_USER_PROFILE, profilePhotos})
 export const updateNewPostTextActionCreator = (text) =>
     ({type: UPDATE_NEW_POST_TEXT, newText: text})
 
