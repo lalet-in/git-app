@@ -13,24 +13,24 @@ let initialState = {
 const newsReducer = (state = initialState, action) => {
     switch (action.type) {
         case UPDATE_NEW_NEWS_BODY:
-            state.newNewsBody = action.body;
-            return state;
+            return {
+                ...state,
+                newNewsBody: action.body
+            };
         case ADD_NEWS:
             let body = state.newNewsBody;
-            state.newNewsBody = '';
-            state.news.push({id: 3, news: body})
-            return state;
-           /* let newNews = {
-                id: 3,
-                news: body
+            return {
+                ...state,
+                newNewsBody: '',
+                news: [...state.news, {id: 3, news: body}]
             };
-            state.news.push(newNews);*/
         default:
             return state;
     }
 }
 export const addNewsActionCreator = () => ({type: ADD_NEWS})
 export const updateNewNewsBodyCreator = (body) =>
-    ({type: UPDATE_NEW_NEWS_BODY, postNews: body})
+    ({type: UPDATE_NEW_NEWS_BODY, body: body})
 
 export default newsReducer;
+

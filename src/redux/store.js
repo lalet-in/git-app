@@ -2,6 +2,7 @@ import profileReducer from "./profile-reducer";
 import dialogsReducer from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
 import newsReducer from "./news-reducer";
+import musikReducer from "./musik-reducer";
 
 
 let store = {
@@ -43,7 +44,8 @@ let store = {
             musik: [
                 {id: 1, musik: 'pum-purum-purum-purum-purum-pum-pum'},
                 {id: 2, musik: 'resto presto ruma ruma eeee'}
-            ]
+            ],
+            newMusikBody: ""
         },
         frendsPage: {
             frends: [
@@ -70,6 +72,8 @@ let store = {
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
         this._state.sidebar = sidebarReducer(this._state.sidebar, action);
         this._state.newsPage = newsReducer(this._state.newsPage, action);
+        this._state.musikPage = musikReducer(this._state.musikPage, action);
+
 
         this._callSubscriber(this._state);
     }

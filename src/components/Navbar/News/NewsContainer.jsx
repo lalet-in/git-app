@@ -1,24 +1,24 @@
 import React from 'react'
 import {addNewsActionCreator, updateNewNewsBodyCreator} from "../../../redux/news-reducer";
 import News from "./News";
+import {connect} from "react-redux";
 
-const NewsContainer = (props) => {
 
-    let state = props.store.getState().newsPage;
-
-    let onAddNewsClick = () => {
-        props.store.dispatch(addNewsActionCreator())
+let mapStateToProps = (state) => {
+    return {
+        addNews: state.newsPage
     }
-
-    let onNewNewsChange = (body) => {
-        props.store.dispatch(updateNewNewsBodyCreator(body));
-    }
-
-    return (
-        <News updateNewNewsBody={onNewNewsChange}
-              addNews={onAddNewsClick}
-              newsPage={state}/>
-        )
 }
-
+let mapDispatchToProps = (dispatch) => {
+    return {
+        onNewNewsChange: (body) => {
+            let action = updateNewNewsBodyCreator(body)
+            dispatch(action)
+        },
+        onAddNewsClick: () => {
+            dispatch(addNewsActionCreator())
+        }
+    }
+}
+const NewsContainer = connect(mapStateToProps, mapDispatchToProps)(News)
 export default NewsContainer;

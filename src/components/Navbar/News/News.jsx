@@ -2,21 +2,23 @@ import React from 'react'
 import s from './News.module.css'
 import NewsItem from "./NewsItem/NewsItemm";
 
+
 const News = (props) => {
 
-    let state = props.newsPage;
+    let state = props.addNews;
 
-    let newsElement = props.newsPage.news.map(n =>
+    let newsElement = props.addNews.news.map(n =>
         <NewsItem news={n.news} id={n.id}/>);
-    let newNewsBody = props.newsPage.newNewsBody;
+
+    let newNewsBody = props.addNews.newNewsBody;
 
     let onAddNewsClick = () => {
-        props.addNews();
+        props.onAddNewsClick();
     }
 
     let onNewNewsChange = (e) => {
         let body = e.target.value;
-        props.updateNewNewsBody(body);
+        props.onNewNewsChange(body);
 
     }
 

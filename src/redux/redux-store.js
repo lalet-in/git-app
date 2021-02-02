@@ -5,6 +5,7 @@ import sidebarReducer from "./sidebar-reducer";
 import newsReducer from "./news-reducer";
 import musikReducer from "./musik-reducer";
 import frendsReducer from "./frends-reducer";
+import usersReducer from "./users-reducers";
 
 let reducers = combineReducers({
     profilePage: profileReducer,
@@ -12,10 +13,13 @@ let reducers = combineReducers({
     sidebar: sidebarReducer,
     newsPage: newsReducer,
     musikPage: musikReducer,
-    frendsPage: frendsReducer
+    frendsPage: frendsReducer,
+    usersPage: usersReducer
 });
 
 let store = createStore(reducers);
+
+window.store = store;
 
 
 export default store;
